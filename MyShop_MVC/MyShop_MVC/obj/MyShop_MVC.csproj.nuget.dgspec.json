@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\ASP_NET\\DZ\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj": {}
+    "C:\\Users\\User\\OneDrive\\Документы\\GitHub\\Asp.net\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\ASP_NET\\DZ\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj": {
+    "C:\\Users\\User\\OneDrive\\Документы\\GitHub\\Asp.net\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\ASP_NET\\DZ\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Документы\\GitHub\\Asp.net\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj",
         "projectName": "MyShop_MVC",
-        "projectPath": "C:\\Users\\User\\source\\repos\\ASP_NET\\DZ\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj",
+        "projectPath": "C:\\Users\\User\\OneDrive\\Документы\\GitHub\\Asp.net\\MyShop_MVC\\MyShop_MVC\\MyShop_MVC.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\ASP_NET\\DZ\\MyShop_MVC\\MyShop_MVC\\obj\\",
+        "outputPath": "C:\\Users\\User\\OneDrive\\Документы\\GitHub\\Asp.net\\MyShop_MVC\\MyShop_MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
