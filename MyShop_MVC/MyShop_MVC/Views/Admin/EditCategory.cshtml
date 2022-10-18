@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model MyShop_MVC.DZ.Category
+
+<style>
+    .field-validation-error {
+        color: #b94a48;
+    }
+  
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+    input.valid {
+        border: 1px solid #16a085;
+    }
+ 
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+</style>
+<a class="btn" asp-controller="Admin" asp-action="ShowCategories">Back</a>
+<form class="edit-form" asp-action="SaveCategory" asp-controller="Admin" asp-route-id="@Model.Id">
+    <p>
+        <label asp-for="Name">Название</label><br />
+        <input type="text" asp-for="Name" />
+        <span asp-validation-for="Name" />
+    </p>
+    <input type="submit" value="Сохранить" class="btn" />
+</form>

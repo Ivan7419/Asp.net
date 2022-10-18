@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model MyShop_MVC.DZ.Product
+<div>
+    <h2>@Model.Name</h2>
+    <div class="buy-container">
+        <div class="price">Цена: @Model.Price ₴</div>
+        @if (ViewBag.IsUser)
+        {
+            @using (Html.BeginForm("Details", "Home", FormMethod.Post))
+            {
+                <input type="hidden" value="@Model.Id" name="idProduct" />
+                <input type="submit" value="Купить" class="addBasket" />
+            }
+        }
+    </div>
+    <img src="@Model.Image" />
+    <p>@Model.Description</p>
+</div>

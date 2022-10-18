@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IndexViewModel
+
+<div id="productContainer">
+    @{
+        if (Model.Products.Count() > 0)
+        {
+            @await Html.PartialAsync("SortedProducts", Model.Products);
+            <p>
+                @if (Model.PageViewModel.HasPreviousPage)
+                {
+                    <a asp-action="SearchProduct"
+                       asp-route-name="@ViewBag.Name"
+                       asp-route-page="@(Model.PageViewModel.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
+                        Назад
+                    </a>
+                }
+                <p>@Model.PageViewModel.PageNumber</p>
+                @if (Model.PageViewModel.HasNextPage)
+                {
+                    <a asp-action="SearchProduct"
+                       asp-route-name="@ViewBag.Name"
+                       asp-route-page="@(Model.PageViewModel.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
+                        Вперед
+                    </a>
+                }
+            </p>
+        }
+        else
+        {
+            <h3 class="text-white text-center">Ничего не найдено</h3>
+        }
+    }
+</div>

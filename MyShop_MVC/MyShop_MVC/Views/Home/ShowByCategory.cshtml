@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IndexViewModel
+
+<style>
+    .glyphicon {
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .glyphicon-chevron-right:after {
+        content: "\00BB";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\00AB";
+    }
+</style>
+
+<form id="sortProducts">
+    <h3>Сортировать:</h3>
+    <select id="filter" class="classic" onchange="changeFilter()">
+        <option>Цена(от высокой к низкой)</option>
+        <option>Цена(от низкой к высокой)</option>#
+        <option selected="selected">Название(от А до Я)</option>
+        <option>Название(от Я до А)</option>
+    </select>
+</form>
+<div id="productContainer">
+    @await Html.PartialAsync("SortedProducts", Model.Products)
+</div>
+
+<nav class="d-flex justify-content-center">
+    <ul class="pagination justify-content-end">
+        @if (Model.PageViewModel.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link text-white bg-success" asp-action="ShowByCategory" asp-route-page="@(Model.PageViewModel.PageNumber - 1)">Назад</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <a class="page-link text-white bg-success" tabindex="-1">Назад</a>
+            </li>
+        }
+        <li class="page-item"><a class="page-link bg-success text-white">@Model.PageViewModel.PageNumber</a></li>
+        @if (Model.PageViewModel.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link text-white bg-success" asp-action="ShowByCategory" asp-route-page="@(Model.PageViewModel.PageNumber + 1)">Вперед</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <a class="page-link text-white bg-success" tabindex="-1">Вперед</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<script>
+    function changeFilter() {
+        var e = document.getElementById("filter");
+        var content = document.getElementById("productContainer");
+        content.innerHTML = '';
+        switch (e.value) {
+            case 'Цена(от высокой к низкой)':
+                content.innerHTML = `@await Html.PartialAsync("SortedProducts", SortOrderByDescendingPrice())`;
+                break;
+            case 'Цена(от низкой к высокой)':
+                content.innerHTML = `@await Html.PartialAsync("SortedProducts", SortOrderByPrice())`;
+                break;
+            case 'Название(от А до Я)':
+                content.innerHTML = `@await Html.PartialAsync("SortedProducts", SortOrderByName())`;
+                break;
+            case 'Название(от Я до А)':
+                content.innerHTML = `@await Html.PartialAsync("SortedProducts", SortOrderByDescendingName())`;
+                break;
+        }
+    }
+</script>
+
+@functions
+{
+    public IEnumerable<ViewProduct> SortOrderByName() => Model.Products.OrderBy(p => p.Name);
+
+    public IEnumerable<ViewProduct> SortOrderByPrice() => Model.Products.OrderBy(p => p.Price);
+
+    public IEnumerable<ViewProduct> SortOrderByDescendingName() => Model.Products.OrderBy(p => p.Name);
+
+    public IEnumerable<ViewProduct> SortOrderByDescendingPrice() => Model.Products.OrderBy(p => p.Price);
+}

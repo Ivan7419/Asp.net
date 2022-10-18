@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model MyShop_MVC.DZ.Product
+
+<style>
+    .field-validation-error {
+        color: #b94a48;
+    }
+  
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+    input.valid {
+        border: 1px solid #16a085;
+    }
+ 
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+</style>
+<a class="btn" asp-controller="Admin" asp-action="ShowProducts">Back</a>
+<form asp-action="SaveProduct" asp-controller="Admin" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Name">Название</label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Компьютер Lenovo IdeaCentre G5 Gaming">
+        <span asp-validation-for="Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Цена</label>
+        <input type="number" class="form-control" asp-for="Price">
+        <span asp-validation-for="Price" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Описание</label>
+        <textarea class="form-control" asp-for="Description" rows="4" placeholder="Созданная для того, чтобы катапультировать тебя в мир гейминга, эта впечатляющая «башня» раскроет возможности производительности и творчества. Устройства IdeaCentre Gaming 5 оснащены новейшими высокопроизводительными процессорами AMD Ryzen, дискретными видеокартами NVIDIA до RTX 2060, оперативной памятью до 16 ГБ DDR4 и различными конфигурациями накопителей в корпусе переливающегося цвета Chameleon Blue. Сочетание спорта и стиля, тишины и силы, десктоп IdeaCentre Gaming 5 оснащен модернизированной системой теплоотвода. Она одновременно охлаждает процессор и приглушает шум системы при значительной игровой нагрузке. Широкий набор портов и возможность дальнейшей «прокачки» устройства помогут тебе совершенствовать его в соответствии со своими потребностями."></textarea>
+        <span asp-validation-for="Description" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Discount">Скидка</label>
+        <input type="number" class="form-control" asp-for="Discount">
+        <span asp-validation-for="Discount" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">URL картинки</label>
+        <input type="text" class="form-control" asp-for="Image" placeholder="https://content.rozetka.com.ua/goods/images/medium/277930786.jpg" />
+        <span asp-validation-for="Image" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Категория</label>
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories"></select>
+
+        <span asp-validation-for="CategoryId" />
+    </div>
+    <p class="d-flex justify-content-center">
+        <input class="btn" type="submit" value="Сохранить" />
+    </p>
+</form>
